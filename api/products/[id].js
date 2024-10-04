@@ -4,6 +4,16 @@
 const products = require('../../data/products.json');
 
 module.exports = (req, res) => {
+
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+    // Handle OPTIONS method
+    if (req.method === 'OPTIONS') {
+      return res.status(200).end();
+    }
   // Extract the ID from the URL by splitting the URL and getting the last part
   const id = req.url.split('/').pop();  // Extract the last part of the URL
 
